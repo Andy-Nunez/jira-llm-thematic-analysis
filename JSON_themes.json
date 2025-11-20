@@ -1,0 +1,255 @@
+{
+  "themes": [
+    {
+      "theme": "Dependency on Other Teams or Resources",
+      "description": "Work was delayed because required input or resources from other teams were not available in time.",
+      "examples": [
+        "will require design help from cadence and hi",
+        "awaiting bi assignment",
+        "please assign the appropriate resource"
+      ]
+    },
+    {
+      "theme": "Operational Sign-Off Delays",
+      "description": "Design or build could not proceed due to pending approval or sign-off from operational stakeholders.",
+      "examples": [
+        "meeting with operations is just now getting scheduled",
+        "operational signoff and approval",
+        "issues getting operational sign off"
+      ]
+    },
+    {
+      "theme": "Late or Incomplete Design Phase",
+      "description": "Design work was not finalized early enough in the release cycle, causing missed deadlines.",
+      "examples": [
+        "design cannot be completed until marketing sets up time with the vendor",
+        "design meetings have been ongoing since September",
+        "design session scheduled after release deadline"
+      ]
+    },
+    {
+      "theme": "Scope Changes or Updated Requirements",
+      "description": "New requirements or policy changes expanded the scope, making original timelines unachievable.",
+      "examples": [
+        "added in changes based on an updated policy for 2026",
+        "guidelines had changed somewhat again",
+        "additional functionality must be enabled"
+      ]
+    },
+    {
+      "theme": "Scheduling and Coordination Issues",
+      "description": "Meetings or demos were scheduled too late or repeatedly rescheduled, delaying progress.",
+      "examples": [
+        "meeting scheduled for 10 28 with operational stakeholders",
+        "demo scheduled 11 3 go live scheduled 11 17",
+        "meeting pending?"
+      ]
+    },
+    {
+      "theme": "Risk Not Communicated Early",
+      "description": "Potential delays were not flagged during stand-ups or status updates until very close to deadlines.",
+      "examples": [
+        "i'd like to have known about it sooner than 3 days before the deadline",
+        "these things are 'lessons learned' moving forward",
+        "risk here was not brought up during stand-ups"
+      ]
+    },
+    {
+      "theme": "Technical Complexity or Unknowns",
+      "description": "Unanticipated technical challenges or unclear workflows required extra investigation.",
+      "examples": [
+        "need to review the association of baby to mother",
+        "concerns of patient safety in areas outside of ed",
+        "interface has very little flexibility"
+      ]
+    },
+    {
+      "theme": "Operational Readiness Gaps",
+      "description": "Operational teams were not ready with documentation, training, or process updates.",
+      "examples": [
+        "operations still need to flesh out their written protocols",
+        "procedure documentation, competencies, and education pending",
+        "delays in getting information from the requesters"
+      ]
+    },
+    {
+      "theme": "External Vendor or Third-Party Dependency",
+      "description": "Progress was blocked waiting for actions from external vendors or partners.",
+      "examples": [
+        "marketing sets up time with the vendor perficient",
+        "waiting on vendor coordination",
+        "dependent on external system updates"
+      ]
+    },
+    {
+      "theme": "Resource Availability Constraints",
+      "description": "Key team members were unavailable due to other priorities or time off.",
+      "examples": [
+        "nick is also ooo for the next 2 weeks",
+        "bi did not have availability",
+        "internal resource unavailable due to other high priority things"
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "issue": "SWIFT-5662",
+      "themes": [
+        "Dependency on Other Teams or Resources",
+        "Operational Sign-Off Delays",
+        "Scheduling and Coordination Issues"
+      ]
+    },
+    {
+      "issue": "SWIFT-6337",
+      "themes": [
+        "Late or Incomplete Design Phase",
+        "Scope Changes or Updated Requirements",
+        "Risk Not Communicated Early"
+      ]
+    },
+    {
+      "issue": "SWIFT-6889",
+      "themes": [
+        "Dependency on Other Teams or Resources",
+        "Scheduling and Coordination Issues"
+      ]
+    },
+    {
+      "issue": "SWIFT-6891",
+      "themes": [
+        "Technical Complexity or Unknowns",
+        "Operational Sign-Off Delays"
+      ]
+    },
+    {
+      "issue": "SWIFT-6922",
+      "themes": [
+        "Operational Readiness Gaps"
+      ]
+    },
+    {
+      "issue": "SWIFT-6927",
+      "themes": [
+        "Scheduling and Coordination Issues"
+      ]
+    },
+    {
+      "issue": "SWIFT-6928",
+      "themes": [
+        "Dependency on Other Teams or Resources",
+        "External Vendor or Third-Party Dependency"
+      ]
+    },
+    {
+      "issue": "SWIFT-6934",
+      "themes": [
+        "Resource Availability Constraints"
+      ]
+    },
+    {
+      "issue": "SWIFT-6948",
+      "themes": [
+        "Scheduling and Coordination Issues"
+      ]
+    },
+    {
+      "issue": "SWIFT-6950",
+      "themes": [
+        "Scope Changes or Updated Requirements",
+        "Technical Complexity or Unknowns"
+      ]
+    },
+    {
+      "issue": "SWIFT-6981",
+      "themes": [
+        "Dependency on Other Teams or Resources",
+        "Scheduling and Coordination Issues"
+      ]
+    },
+    {
+      "issue": "SWIFT-6989",
+      "themes": [
+        "Technical Complexity or Unknowns",
+        "Dependency on Other Teams or Resources"
+      ]
+    },
+    {
+      "issue": "SWIFT-7042",
+      "themes": [
+        "Scope Changes or Updated Requirements",
+        "Scheduling and Coordination Issues"
+      ]
+    },
+    {
+      "issue": "SWIFT-7047",
+      "themes": [
+        "Operational Readiness Gaps"
+      ]
+    },
+    {
+      "issue": "SWIFT-7080",
+      "themes": [
+        "Operational Readiness Gaps",
+        "Scope Changes or Updated Requirements"
+      ]
+    },
+    {
+      "issue": "SWIFT-7084",
+      "themes": [
+        "Operational Sign-Off Delays",
+        "Scope Changes or Updated Requirements"
+      ]
+    },
+    {
+      "issue": "SWIFT-7142",
+      "themes": [
+        "Operational Sign-Off Delays",
+        "Scope Changes or Updated Requirements"
+      ]
+    },
+    {
+      "issue": "SWIFT-7143",
+      "themes": [
+        "Operational Sign-Off Delays",
+        "Scope Changes or Updated Requirements"
+      ]
+    },
+    {
+      "issue": "SWIFT-7170",
+      "themes": [
+        "Operational Sign-Off Delays"
+      ]
+    },
+    {
+      "issue": "SWIFT-7204",
+      "themes": [
+        "Resource Availability Constraints"
+      ]
+    },
+    {
+      "issue": "SWIFT-7287",
+      "themes": [
+        "Scope Changes or Updated Requirements"
+      ]
+    },
+    {
+      "issue": "SWIFT-7300",
+      "themes": [
+        "Operational Readiness Gaps"
+      ]
+    },
+    {
+      "issue": "SWIFT-7393",
+      "themes": [
+        "Scheduling and Coordination Issues"
+      ]
+    },
+    {
+      "issue": "SWIFT-7472",
+      "themes": [
+        "Operational Sign-Off Delays"
+      ]
+    }
+  ]
+}
