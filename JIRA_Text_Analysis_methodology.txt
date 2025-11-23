@@ -1,0 +1,149 @@
+1.1 Overview
+
+This is the methodology used to produce the results in cluster_reasoning_
+analysis.pdf, where 241 comments from 39 issues were analyzed to identify
+5 major delay theme clusters.
+
+1.2 Data Preprocessing and Aggregation Strategy
+
+The methodology begins with a strategic aggregation phase that groups individual
+comments by their parent issue identifier (IssueKey). This aggregation serves
+two critical functions: (1) providing complete conversational context to the
+language model, enabling more accurate thematic inference; and (2) reducing API
+call volume by a factor proportional to the average number of comments per issue.
+
+Formally, given a dataset D = {(c_i, k_i)} where c_i represents comment text
+and k_i represents the associated issue key, we perform a grouping operation:
+
+    G(k) = {c_i | k_i = k for all i in D}
+
+This transformation reduces the problem space from n individual comments to m
+unique issues, where m << n. In the evaluated dataset, this resulted in a
+reduction from 241 individual text units to 39 aggregated conversational threads.
+
+Applied Example (cluster_reasoning_analysis.pdf):
+    - Input: 241 individual JIRA comments
+    - Aggregation: Grouped into 39 issue-level conversation threads
+    - Result: 39 API calls instead of 241
+
+1.3 LLM-Based Theme Extraction
+
+For each aggregated issue conversation G(k), we submit the combined text to a
+GPT-4 language model with carefully engineered prompts designed to extract:
+
+    a) Primary delay factors (thematic categories)
+    b) Sentiment indicators (frustration, neutrality, satisfaction)
+    c) Root cause attribution (actionable insights)
+    d) Structured output in JSON format for downstream processing
+
+The LLM configuration employs a low temperature parameter (T = 0.3) to ensure
+deterministic, factual outputs rather than creative interpretation. Maximum
+token limits are set to 2,000 tokens per response, sufficient for comprehensive
+analysis of aggregated issue conversations.
+
+Prompt Engineering Structure:
+The prompt follows a structured format that provides:
+    - Specific extraction requirements
+    - Output format specifications (JSON schema)
+    - Focus on actionable, management-relevant insights
+
+Example Output Format (as seen in cluster_reasoning_analysis.pdf):
+    {
+        "issue_key": "SWIFT-6889",
+        "theme": "Resource Constraints",
+        "sentiment": "negative",
+        "reasoning": "The primary issue causing the delay was the lack of
+                      assigned resources to the Design task, as highlighted by
+                      multiple comments requesting status updates and noting
+                      the absence of a resource assignment."
+    }
+
+1.4 Post-Processing and Theme Clustering
+
+Raw LLM outputs undergo secondary clustering to address semantic redundancy.
+Multiple issues may generate thematically similar but lexically distinct delay
+factors. We employ scikit-learn clustering algorithms to identify and consolidate
+semantically equivalent themes, producing a deduplicated set of delay categories.
+
+The clustering process:
+    1. Extracts all themes from LLM responses across all issues
+    2. Generates embeddings or feature vectors for each theme
+    3. Applies clustering algorithms (k-means)
+    4. Consolidates similar themes under representative labels
+    5. Aggregates frequency and impact metrics
+
+Applied Example (cluster_reasoning_analysis.pdf):
+    Step 1: LLM analyzed 39 issues and extracted individual themes
+    Step 2: Themes were clustered into 5 major categories:
+        - Cluster 1: Resource Constraints (5 issues)
+        - Cluster 2: Communication Gaps (12 issues)
+        - Cluster 3: Dependencies (4 issues)
+        - Cluster 4: Requirements Issues (14 issues)
+        - Cluster 5: Process Issues (4 issues)
+    Step 3: Metrics aggregated per cluster (avg days active, avg comments)
+
+1.5 Performance Characteristics
+
+Dataset Specifications (Actual Implementation):
+    - Total comments: 241
+    - Unique issues: 39
+    - Average comment length: 276 characters (approximately 70 words)
+    - Total corpus size: 66,000 characters
+
+Processing Metrics (Observed):
+    - API calls required: 39 (one per aggregated issue)
+    - Processing time: 2-3 minutes
+    - Computational cost: $0.25-0.50 USD per complete analysis
+    - Rate limiting: 20 requests per minute (configurable)
+    - Output: 5 thematic clusters with detailed reasoning per issue
+
+1.7 Applicability Criteria
+
+This methodology is recommended when dataset contains fewer than 1,000 aggregated units (issues/tickets)
+
+
+================================================================================
+
+REFERENCES AND TECHNICAL SPECIFICATIONS
+
+Programming Languages: Python 3.9+
+
+Method 1 Dependencies (Used in This Project):
+    - pandas (data manipulation and grouping)
+    - openai (GPT-4 API client)
+    - scikit-learn (post-processing clustering)
+    - matplotlib/seaborn (visualization)
+
+Method 2 Dependencies (Alternative Approach):
+    - sentence-transformers (local embeddings)
+    - faiss-cpu/faiss-gpu (vector indexing and search)
+    - numpy (numerical operations)
+    - scikit-learn (clustering algorithms)
+    - openai (selective LLM refinement)
+
+LLM Configuration (Applied in This Project):
+    - Model: GPT-4-turbo-preview
+    - Temperature: 0.3 (deterministic outputs)
+    - Max tokens: 2,000
+    - Rate limit: 20 requests/minute
+
+Embedding Models (Method 2 - Not Used in This Project):
+    - Sentence-BERT: all-MiniLM-L6-v2 (384 dimensions, fast)
+    - Sentence-BERT: all-mpnet-base-v2 (768 dimensions, high quality)
+    - OpenAI: text-embedding-3-small (1536 dimensions, commercial)
+
+Data Processing (Applied in This Project):
+    - Aggregation: Group by IssueKey (39 groups from 241 comments)
+    - API Calls: 39 (one per issue)
+    - Clustering: Post-LLM clustering into 5 thematic categories
+    - Output: PDF report with per-issue reasoning and cluster metrics
+
+
+================================================================================
+
+Document Version: 1.0
+Date: November 2025
+Project: JIRA Delay Analysis (October 2025)
+Dataset: 241 comments, 39 unique issues
+Methodology Applied: Method 1 (Direct LLM Analysis with Issue-Level Aggregation)
+Results File: cluster_reasoning_analysis.pdf

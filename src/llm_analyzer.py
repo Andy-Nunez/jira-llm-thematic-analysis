@@ -25,8 +25,9 @@ class DelayThemeAnalyzer:
                 "Copy .env.example to .env and add your API key."
             )
 
+        # Initialize client without deprecated parameters
         self.client = OpenAI(api_key=self.api_key)
-        self.model = os.getenv('OPENAI_MODEL', 'gpt-4-turbo-preview')
+        self.model = os.getenv('OPENAI_MODEL', 'gpt-4-turbo')
         self.temperature = float(os.getenv('OPENAI_TEMPERATURE', '0.3'))
         self.max_tokens = int(os.getenv('OPENAI_MAX_TOKENS', '2000'))
 
