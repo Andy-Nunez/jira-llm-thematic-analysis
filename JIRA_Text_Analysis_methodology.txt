@@ -6,7 +6,7 @@ analysis.pdf, where 241 comments from 39 issues were analyzed to identify
 
 1.2 Data Preprocessing and Aggregation Strategy
 
-The methodology begins with a strategic aggregation phase that groups individual
+We started with a strategic aggregation phase that groups individual
 comments by their parent issue identifier (IssueKey). This aggregation serves
 two critical functions: (1) providing complete conversational context to the
 language model, enabling more accurate thematic inference; and (2) reducing API
@@ -80,6 +80,26 @@ Applied Example (cluster_reasoning_analysis.pdf):
         - Cluster 3: Dependencies (4 issues)
         - Cluster 4: Requirements Issues (14 issues)
         - Cluster 5: Process Issues (4 issues)
+
+    Important Note on Cluster Composition:
+    K-means clustering operates on TF-IDF feature vectors derived from the
+    combined "theme + reasoning" text, not solely on the LLM-assigned theme
+    labels. This text-based similarity approach can reveal semantic patterns
+    that transcend simple categorical labels.
+
+    Notably, Cluster 1 contains both "Resource Constraints" issues and two
+    "Dependencies" issues (SWIFT-6922, SWIFT-6932). The algorithm identified that these two
+    dependency issues share strong lexical similarity with resource constraint
+    issues due to their focus on INTERNAL team availability. In contrast,
+    Cluster 3 (pure Dependencies) primarily contains issues involving external
+    vendors and cross-organizational coordination.
+
+    This demonstrates that K-means discovered a meaningful semantic distinction:
+        - Cluster 1 = Internal Team Dependencies + Resource/Staffing Constraints
+        - Cluster 3 = External Dependencies + Cross-functional Coordination
+
+    This nuanced clustering provides more actionable insights than strict categorical separation would allow.
+
     Step 3: Metrics aggregated per cluster (avg days active, avg comments)
 
 1.5 Performance Characteristics
@@ -114,23 +134,11 @@ Method 1 Dependencies (Used in This Project):
     - scikit-learn (post-processing clustering)
     - matplotlib/seaborn (visualization)
 
-Method 2 Dependencies (Alternative Approach):
-    - sentence-transformers (local embeddings)
-    - faiss-cpu/faiss-gpu (vector indexing and search)
-    - numpy (numerical operations)
-    - scikit-learn (clustering algorithms)
-    - openai (selective LLM refinement)
-
 LLM Configuration (Applied in This Project):
     - Model: GPT-4-turbo-preview
     - Temperature: 0.3 (deterministic outputs)
     - Max tokens: 2,000
     - Rate limit: 20 requests/minute
-
-Embedding Models (Method 2 - Not Used in This Project):
-    - Sentence-BERT: all-MiniLM-L6-v2 (384 dimensions, fast)
-    - Sentence-BERT: all-mpnet-base-v2 (768 dimensions, high quality)
-    - OpenAI: text-embedding-3-small (1536 dimensions, commercial)
 
 Data Processing (Applied in This Project):
     - Aggregation: Group by IssueKey (39 groups from 241 comments)
@@ -141,9 +149,12 @@ Data Processing (Applied in This Project):
 
 ================================================================================
 
-Document Version: 1.0
+Document Version: 1.1
 Date: November 2025
 Project: JIRA Delay Analysis (October 2025)
 Dataset: 241 comments, 39 unique issues
 Methodology Applied: Method 1 (Direct LLM Analysis with Issue-Level Aggregation)
 Results File: cluster_reasoning_analysis.pdf
+Author: Orlando A. Nunez Isaac, MD
+
+*This methodology was written with the assistance of generative AI*
