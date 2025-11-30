@@ -6,6 +6,10 @@ This is a **JIRA Text Data Analysis** project that uses LLM-assisted sentiment a
 
 **Key Goal**: Identify the top 5 and top 10 actionable themes causing project delays through automated analysis of JIRA comments.
 
+## Environment Preferences
+
+**IMPORTANT**: This project runs on Windows. Always use **PowerShell** as the default shell for all command-line operations. Do not use bash unless explicitly requested.
+
 ## Current Dataset
 
 - **Data File**: [JiraComments_FromJql.csv](JiraComments_FromJql.csv) (241 comments, 39 unique issues)
