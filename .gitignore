@@ -43,7 +43,6 @@ ENV/
 *.csv
 *.xlsx
 *.json
-!JSON_themes.json
 
 # Subdirectory data files
 data/raw/*.csv
