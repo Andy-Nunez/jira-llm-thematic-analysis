@@ -23,10 +23,6 @@ Text_Analysis/
 │   └── processed/              # Cleaned and processed data
 ├── notebooks/
 │   └── jira_delay_analysis.ipynb  # Main analysis notebook
-├── src/
-│   ├── data_loader.py          # Data loading utilities
-│   ├── llm_analyzer.py         # OpenAI API integration
-│   └── theme_clustering.py     # Theme extraction and clustering
 ├── reports/                    # Generated visualizations and reports
 ├── config/                     # Configuration files
 ├── requirements.txt            # Python dependencies

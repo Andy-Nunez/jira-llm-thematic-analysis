@@ -73,20 +73,8 @@ Analyze this comment and extract:
 COMMENT:
 {comment_text}
 
-Categorize the delay into ONE of these actionable management themes:
-- Technical Debt: Legacy code, outdated dependencies, refactoring needs
-- Resource Constraints: Insufficient staffing, competing priorities
-- Dependencies: Blocked by other teams, external vendors, infrastructure
-- Requirements Issues: Unclear specs, changing requirements, scope creep
-- Testing/QA: Test failures, insufficient test coverage, QA bottlenecks
-- Environment Issues: Dev/staging environment problems, deployment issues
-- Communication Gaps: Misalignment, lack of updates, unclear ownership
-- Complexity: Underestimated effort, technical complexity
-- Process Issues: Workflow inefficiencies, approval delays
-- External Factors: Customer delays, vendor delays, third-party issues
-
 Respond in this exact format:
-THEME: [one of the above categories]
+THEME: [brief descriptive theme name]
 SENTIMENT: [positive/neutral/negative]
 REASONING: [one sentence explanation]"""
 
